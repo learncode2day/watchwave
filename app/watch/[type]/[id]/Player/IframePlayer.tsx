@@ -50,10 +50,8 @@ const IframePlayer = () => {
 		>
 			{result && (
 				<>
-					<div className="fr w-full justify-start bg-black px-5 py-3"></div>
 					{'title' in result && sourceCollectionMovie && (
 						<>
-							<iframe allowFullScreen={true} className="h-full w-full" src={sourceCollectionMovie[source]} />
 							<div className="fr w-full justify-start bg-black px-5 py-3">
 								<div className="fr gap-2 text-xl justify-between">
 									<div className="fr gap-2 text-xl">
@@ -69,11 +67,11 @@ const IframePlayer = () => {
 									<SourcesButton sourceCollection={sourceCollectionMovie} />
 								</div>
 							</div>
+							<iframe allowFullScreen={true} className="h-full w-full" src={sourceCollectionMovie[source]} />
 						</>
 					)}
 					{'name' in result && sourceCollectionTV && (
 						<>
-							<iframe allowFullScreen={true} className="h-full w-full" src={sourceCollectionTV[source]} />
 							<div className="fr w-full justify-start bg-black px-5 py-3">
 								<div className="fr gap-2 text-xl justify-between w-full">
 									<div className="fr gap-2 text-xl">
@@ -93,6 +91,7 @@ const IframePlayer = () => {
 									{result.media_type === 'tv' && episodePanelVisible && <EpisodePanel />}
 								</div>
 							</div>
+							<iframe allowFullScreen={true} className="h-full w-full" src={sourceCollectionTV[source]} />
 						</>
 					)}
 				</>

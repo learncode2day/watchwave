@@ -42,7 +42,7 @@ const Collection = ({ collection }: { collection: Collection }) => {
 			<div className="fc w-full relative">
 				{collectionData && (
 					<>
-						<div className="bg-black/60 absolute inset-0 z-0">
+						<div className="bg-black/80 absolute inset-0 z-0">
 							<svg xmlns="http://www.w3.org/2000/svg" version="1.1" className="svg-filters">
 								<defs>
 									<filter id="turbulence" x="0" y="0">
@@ -61,19 +61,20 @@ const Collection = ({ collection }: { collection: Collection }) => {
 						/>
 						<div className="px-2 sm:px-5 py-3 fc w-full z-10 items-start">
 							<h3 className="text-xl sm:text-2xl font-bold">{collection.name}</h3>
-							<p className="text-sm sm:text-base">{collectionData.overview}</p>
+							<p className="text-sm sm:text-base max-w-xl">{collectionData.overview}</p>
 							<div className="fr gap-3 mt-5 flex-wrap">
-								{collectionData.parts.map((part) => (
-									<Link key={part.id} href={`/watch/${part.media_type}/${part.id}`}>
-										<Image
-											src={getImagePath(part.poster_path, 'w200')}
-											alt="Poster"
-											width={100}
-											height={150}
-											className="rounded-xl"
-										/>
-									</Link>
-								))}
+								{collectionData &&
+									collectionData.parts.map((part) => (
+										<Link key={part.id} href={`/watch/${part.media_type}/${part.id}`}>
+											<Image
+												src={getImagePath(part.poster_path, 'w200')}
+												alt="Poster"
+												width={100}
+												height={150}
+												className="rounded-xl"
+											/>
+										</Link>
+									))}
 							</div>
 							<div className="fr w-full flex-wrap gap-5"></div>
 						</div>

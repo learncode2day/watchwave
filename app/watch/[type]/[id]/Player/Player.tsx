@@ -101,6 +101,27 @@ const Player: React.FC = () => {
 		}
 	};
 
+	// text tracks change event listener
+	// useEffect(() => {
+	// 	if (player.current) {
+	// 		player.current.textTracks.addEventListener('change', () => {
+	// 			console.log('text track changed');
+	// 			// map through all text tracks and disable them
+	// 			player.current!.textTracks.forEach((track) => {
+	// 				track.mode = 'disabled';
+	// 			});
+
+	// 		});
+
+	// 		// remove event listener when component unmounts
+	// 		return () => {
+	// 			player.current.textTracks.removeEventListener('change', () => {
+	// 				console.log('text track changed');
+	// 			});
+	// 		};
+	// 	}
+	// }, [player.current]);
+
 	const failAll = () => {
 		loaderO.map((state, index) => {
 			// set each state to failed
@@ -145,9 +166,7 @@ const Player: React.FC = () => {
 
 					resolve(data.output);
 				} catch {
-					toast.error('Failed to fetch sources', {
-						position: 'top-right',
-					});
+					console.log('Failed to fetch sources');
 					setFetching(false);
 					reject();
 				}
@@ -175,9 +194,7 @@ const Player: React.FC = () => {
 					setFetching(false);
 					resolve(data.output);
 				} catch {
-					toast.error('Failed to fetch sources', {
-						position: 'top-right',
-					});
+					console.log('Failed to fetch sources');
 					setFetching(false);
 					reject();
 				}

@@ -62,7 +62,7 @@ const MultiStepLoader = ({ failAll }: { failAll: () => void }) => {
 								return (
 									<motion.div
 										key={index}
-										className={cn('fr mb-4 justify-start gap-2 text-left')}
+										className={cn('fr mb-4 justify-center gap-2')}
 										initial={{ opacity: 0, y: -(value * 40) }}
 										animate={{ opacity: opacity, y: -(value * 40) }}
 										transition={{ duration: 0.5 }}
@@ -95,6 +95,12 @@ const MultiStepLoader = ({ failAll }: { failAll: () => void }) => {
 									</motion.div>
 								);
 							})}
+							<div className="text-sm text-white/60">
+								If stuck on Video Initializing,{' '}
+								<button onClick={() => failAll()} className="text-blue-500 underline underline-offset-2">
+									Switch to Embeds
+								</button>
+							</div>
 						</div>
 					</div>
 

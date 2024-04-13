@@ -1,15 +1,14 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
 export const firebaseApp = {
-  apiKey: "AIzaSyCORF8nvo4Mc1qQnRIhTcqtPUbshR9vd4Q",
-  authDomain: "watchwave-ca3cd.firebaseapp.com",
-  projectId: "watchwave-ca3cd",
-  storageBucket: "watchwave-ca3cd.appspot.com",
-  messagingSenderId: "422821315752",
-  appId: "1:422821315752:web:4bd69f4a3e254b67e32e9d",
-  measurementId: "G-L6ZH6DC6SH",
+	apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+	authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+	projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+	storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+	messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+	appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 export const app = initializeApp(firebaseApp);

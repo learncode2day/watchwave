@@ -4,9 +4,9 @@ import { doc, setDoc, arrayUnion, arrayRemove, getDoc } from 'firebase/firestore
 import { db } from './firebase';
 import { UserAuth } from '../../context/AuthContext';
 
-const useAddToContinueWatching = (type: string | null | undefined, id: number | null | undefined) => {
+const useAddToContinueWatching = (type: string | null | undefined, id: number | null | undefined, time?: number) => {
 	const { user } = UserAuth();
-	const add = async (time?: number) => {
+	const add = async () => {
 		if (!user || !id || !type) return;
 
 		const userRef = doc(db, 'users', user.uid);

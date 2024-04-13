@@ -9,6 +9,7 @@ import { IoArrowBack, IoGlobe } from 'react-icons/io5';
 import { LuLoader } from 'react-icons/lu';
 import { useMainStore } from '@/app/store/main-state-provider';
 import PButton from './PButton';
+import { useTVStore } from '@/app/store/tv-state-provider';
 
 export const SubtitlesPanel = () => {
 	const {
@@ -25,6 +26,8 @@ export const SubtitlesPanel = () => {
 		setSubtitle,
 	} = useSubtitlesStore((state) => state);
 	const { result } = useMainStore((state) => state);
+	const { episode, season } = useTVStore((state) => state);
+
 	const addMoreSubs = async () => {
 		setLoading(true);
 		if (!result?.id || !currentLang) return;
@@ -32,10 +35,28 @@ export const SubtitlesPanel = () => {
 		const l = langs.find((lang) => lang.lang === currentLang);
 		const type = result.media_type === 'movie' ? 'movie' : 'episode';
 
-		const newsubs = await fetch('/api/os?mode=sub&tmdb_id=' + result.id + '&type=' + type + '&languages=' + l?.iso_639_1);
-		const data = await newsubs.json();
-		console.log(data);
-		setFetchedSubs([...fetchedSubs, ...data]);
+		if (type === 'episode') {
+			const newsubs = await fetch(
+				'/api/os?mode=sub&tmdb_id=' +
+					result.id +
+					'&type=' +
+					type +
+					'&languages=' +
+					l?.iso_639_1 +
+					'&episode_number=' +
+					episode +
+					'&season_number=' +
+					season
+			);
+			const data = await newsubs.json();
+			console.log(data);
+			setFetchedSubs([...fetchedSubs, ...data]);
+		} else {
+			const newsubs = await fetch('/api/os?mode=sub&tmdb_id=' + result.id + '&type=' + type + '&languages=' + l?.iso_639_1);
+			const data = await newsubs.json();
+			console.log(data);
+			setFetchedSubs([...fetchedSubs, ...data]);
+		}
 		setLoading(false);
 	};
 	const getLanguageNameFromCode = (code: string) => {

@@ -264,14 +264,7 @@ const Showcase = ({ result, vid }: Props) => {
 				<div className="fc w-full items-start justify-start px-5 pr-10">
 					{result.logo ? (
 						<div className="w-full md:max-w-[calc(50%)] px-3">
-							<Image
-								src={result.logo}
-								alt="movie logo"
-								objectFit="cover"
-								width={300}
-								height={200}
-								className="mb-5  w-full md:max-w-[250px]"
-							/>
+							<Image src={result.logo} alt="movie logo" width={300} height={200} className="mb-5  w-full md:max-w-[250px]" />
 						</div>
 					) : (
 						<h1 className="mb-3 pr-10 text-5xl font-bold text-white md:mb-5 md:text-8xl">
