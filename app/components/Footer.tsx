@@ -1,7 +1,7 @@
 const Footer = () => {
 	return (
 		<>
-			{/* <div className="fr mt-16 w-full gap-2 px-3 py-3 pb-20 text-sm sm:pb-3">
+			{ <div className="fr mt-16 w-full gap-2 px-3 py-3 pb-20 text-sm sm:pb-3">
 				<div className="fc sm:fr font-inter gap-2 text-center text-zinc-500">
 					<div>
 						<p className="inline-flex gap-1">
@@ -26,7 +26,7 @@ const Footer = () => {
 					</div>
 					<span>© {new Date().getFullYear()} All Rights Reserved.</span>
 				</div>
-			</div> */}
+			</div> }
 		</>
 	);
 };
